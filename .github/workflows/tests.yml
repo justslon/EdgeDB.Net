@@ -23,6 +23,7 @@ jobs:
 
   build:
     needs: setup
+    runs-on: ubuntu-latest
     name: Build
     steps:
     - name: Restore dependencies
@@ -33,6 +34,7 @@ jobs:
 
   test:
     needs: build
+    runs-on: ubuntu-latest
     name: Tests
     steps:
     - name: Unit Tests
