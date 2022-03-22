@@ -7,7 +7,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: Setup
+    name: Run test suite
     
     steps:
     - uses: actions/checkout@v2
@@ -25,5 +25,5 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
 
-    - name: Unit Tests
-      run: dotnet ./src/EdgeDB.UnitTests test --no-build --verbosity normal
+    - name: Unit test
+      run: dotnet test ./src/EdgeDB.UnitTests --no-build --verbosity normal
