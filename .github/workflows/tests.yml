@@ -22,6 +22,8 @@ jobs:
         server-version: stable
         instance-name: EdgeDB
         
+    - run: echo $runstate-dir
+
     - name: Restore dependencies
       run: dotnet restore
 
