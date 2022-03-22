@@ -102,7 +102,7 @@ namespace EdgeDB
             var projectDir = ConfigUtils.GetInstanceProjectDirectory(dirName);
 
             if (!Directory.Exists(projectDir))
-                throw new DirectoryNotFoundException($"Couldn't find project directory for {path}");
+                throw new DirectoryNotFoundException($"Couldn't find project directory for {path}: {projectDir}");
 
             var instanceName = File.ReadAllText(Path.Combine(projectDir, "instance-name"));
 
