@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace EdgeDB.UnitTest.Codecs
 {
     [TestClass]
-    internal class ScalarTests
+    public class ScalarTests
     {
-        public void TestCodec<TType>(IScalarCodec<TType>? codec, TType expectedValue, byte[] expectedSerializedValue)
+        internal void TestCodec<TType>(IScalarCodec<TType>? codec, TType expectedValue, byte[] expectedSerializedValue)
         {
             Assert.IsNotNull(codec);
 

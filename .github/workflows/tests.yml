@@ -1,0 +1,39 @@
+name: Tests
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    name: Setup
+    
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+  
+    - uses: edgedb/setup-edgedb@v1.2.2
+      with:
+        instance-name: edgedb-dotnet
+
+  build:
+    needs: setup
+    name: Build
+    steps:
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore
+
+  test:
+    needs: build
+    name: Tests
+    steps:
+    - name: Unit Tests
+      run: dotnet ./src/EdgeDB.UnitTests test --no-build --verbosity normal
