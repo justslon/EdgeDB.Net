@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EdgeDB.UnitTest.Codecs
+namespace EdgeDB.Tests.Unit.Codecs
 {
     [TestClass]
     public class ScalarTests
