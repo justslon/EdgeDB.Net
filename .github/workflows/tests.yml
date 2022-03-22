@@ -5,7 +5,7 @@ on:
   - pull_request
 
 jobs:
-  setup:
+  test:
     runs-on: ubuntu-latest
     name: Setup
     
@@ -17,25 +17,13 @@ jobs:
       with:
         dotnet-version: 6.0.x
   
-    - uses: edgedb/setup-edgedb@v1.2.2
-      with:
-        instance-name: edgedb-dotnet
-
-  build:
-    needs: setup
-    runs-on: ubuntu-latest
-    name: Build
-    steps:
+    - uses: edgedb/setup-edgedb@v1
+    
     - name: Restore dependencies
       run: dotnet restore
 
     - name: Build
       run: dotnet build --no-restore
 
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    name: Tests
-    steps:
     - name: Unit Tests
       run: dotnet ./src/EdgeDB.UnitTests test --no-build --verbosity normal
