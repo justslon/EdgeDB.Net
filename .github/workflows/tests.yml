@@ -18,8 +18,10 @@ jobs:
         dotnet-version: 6.0.x
   
     - uses: edgedb/setup-edgedb@v1
-    - run: edgedb query "SELECT 'EdgeDB query test'"
-    
+      with:
+        server-version: stable
+        instance-name: edgedb_dotnet
+        
     - name: Restore dependencies
       run: dotnet restore
 
