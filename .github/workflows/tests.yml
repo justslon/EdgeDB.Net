@@ -20,10 +20,10 @@ jobs:
     - uses: edgedb/setup-edgedb@v1
       with:
         server-version: stable
-        instance-name: EdgeDB
+        instance-name: EdgeDB_Dotnet_Test
         
     - run: edgedb instance list
-    
+
     - name: Restore dependencies
       run: dotnet restore
 

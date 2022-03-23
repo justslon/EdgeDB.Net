@@ -12,7 +12,7 @@ namespace EdgeDB.Tests.Integration
 
         public ClientFixture()
         {
-            var conn = EdgeDBConnection.FromProjectFile("../../../../../edgedb.toml");
+            var conn = EdgeDBConnection.FromInstanceName("EdgeDB_Dotnet_Test");
 
             EdgeDB = new(conn);
         }
