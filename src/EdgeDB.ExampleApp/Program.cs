@@ -14,27 +14,11 @@ var edgedb = new EdgeDBClient(EdgeDBConnection.FromProjectFile(@"../../../../../
     Logger = Logger.GetLogger<EdgeDBClient>(Severity.Warning, Severity.Critical, Severity.Error, Severity.Info),
 });
 
-var numTasks = 1000;
-Task[] tasks = new Task[numTasks];
-ConcurrentBag<string> results = new();
 
-for (int i = 0; i != numTasks; i++)
-{
-    tasks[i] = Task.Run(async () =>
-    {
-        results.Add(await edgedb.QueryRequiredSingleAsync<string>("select \"Hello, Dotnet!\""));
-    });
-}
-
-
-Stopwatch sw = Stopwatch.StartNew();
-
-await Task.WhenAll(tasks).ConfigureAwait(false);
-
-sw.Stop();
 
 // hault the program
 await Task.Delay(-1);
+
 // our model in a C# form
 [EdgeDBType]
 public class Person

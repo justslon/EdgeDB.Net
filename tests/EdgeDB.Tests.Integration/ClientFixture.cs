@@ -21,7 +21,7 @@ namespace EdgeDB.Tests.Integration
             }
             catch
             {
-                conn = JsonConvert.DeserializeObject<EdgeDBConnection>(File.ReadAllText("/home/edgedb/.config/edgedb/credentials/EdgeDB_Dotnet_Test.json"))!;
+                conn = JsonConvert.DeserializeObject<EdgeDBConnection>(File.ReadAllText("/home/runner/.config/edgedb/credentials/EdgeDB_Dotnet_Test.json"))!;
             }
 
             EdgeDB = new(conn);
