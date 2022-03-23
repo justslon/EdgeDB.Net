@@ -22,6 +22,8 @@ jobs:
         server-version: stable
         instance-name: EdgeDB
         
+    - run: edgedb instance list
+    
     - name: Restore dependencies
       run: dotnet restore
 
